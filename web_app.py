@@ -95,5 +95,5 @@ if st.button(f"Generate {NUM_SAMPLES} samples of {digit}"):
     batch = sample_images(G, digit)
     grid = make_grid(batch, nrow=NUM_SAMPLES, padding=4)
     npimg = grid.permute(1,2,0).numpy()
-    st.image(npimg, clamp=True, caption=f"Digit {digit}", width=64)
+    st.image(npimg, clamp=True, caption=f"Digit {digit}", width=200)
 
