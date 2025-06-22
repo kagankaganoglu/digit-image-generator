@@ -75,11 +75,11 @@ NUM_SAMPLES  = 5
 DEVICE       = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 # ────────────────────────────────────────────────────────────────────────
-
-# load checkpoint & generate
-G = Generator().to(DEVICE).eval()
-G.load_state_dict(torch.load('cgan_generator.pth', map_location=DEVICE))
-
+def load_generator():
+    G = Generator().to(DEVICE).eval()
+    G.load_state_dict(torch.load("cgan_generator.pth", map_location=DEVICE))
+    return G
+    
 def sample_images(G, digit, n=NUM_SAMPLES):
     z = torch.randn(n, Z_DIM, device=DEVICE)
     labels = torch.full((n,), digit, dtype=torch.long, device=DEVICE)
